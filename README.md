@@ -1,2 +1,1 @@
-# conferenceApp
-Conference web application
+# Conference web application
