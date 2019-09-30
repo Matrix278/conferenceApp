@@ -90,9 +90,9 @@ export default class ParticipantForm extends React.Component{
                 <div className="h4">Add new participant</div>
                 <form>
                     <div className="form-group row">
-                        <label htmlFor="example-text-input" className="col-2 col-form-label">Conference ID</label>
+                        <label htmlFor="conferenceSelectBox" className="col-2 col-form-label">Conference ID</label>
                         <div className="col-10">
-                            <select name="conferenceId" id="example-text-input" className={`form-control ${this.state.conferenceIdError ? 'is-invalid' : ''}`} onChange={this.handleConferenceIdChange} onBlur={this.validateConferenceId}>
+                            <select name="conferenceId" id="conferenceSelectBox" className={`form-control ${this.state.conferenceIdError ? 'is-invalid' : ''}`} onChange={this.handleConferenceIdChange} onBlur={this.validateConferenceId}>
                             <option value="">Select an option</option>
                                 {
                                     this.props.loadedConferences.map(
@@ -119,7 +119,7 @@ export default class ParticipantForm extends React.Component{
 						</div>
 					</div>
                     <div className="form-group">
-                        <button disabled={!isEnabled} className="btn btn-success" onClick={this.handleSubmit}>Add participant</button>
+                        <button type="submit" disabled={!isEnabled} className="btn btn-success" onClick={this.handleSubmit}>Add participant</button>
                     </div>        
                 </form>
             </div>

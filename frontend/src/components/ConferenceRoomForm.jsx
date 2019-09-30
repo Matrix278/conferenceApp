@@ -113,7 +113,7 @@ export default class ConferenceRoomForm extends React.Component{
                         </div>
                     </div>
                     <div className="form-group">
-                        <button disabled={!isEnabled} className="btn btn-success" onClick={this.handleSubmit}>Create room</button>
+                        <button type="submit" disabled={!isEnabled} className="btn btn-success" onClick={this.handleSubmit}>Create room</button>
                     </div>        
                 </form>
             </div>

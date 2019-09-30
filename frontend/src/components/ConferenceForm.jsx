@@ -87,9 +87,9 @@ export default class ConferenceForm extends React.Component {
                 <div className="h4">Create new conference</div>
                 <form>
                     <div className="form-group row">
-                        <label htmlFor="example-text-input" className="col-2 col-form-label">Room ID</label>
+                        <label htmlFor="roomSelectBox" className="col-2 col-form-label">Room ID</label>
                         <div className="col-10">
-                            <select name="roomId" id="example-text-input" className={`form-control ${this.state.roomIdError ? 'is-invalid' : ''}`} onChange={this.handleRoomIdChange} onBlur={this.validateRoomId}>
+                            <select name="roomId" id="roomSelectBox" className={`form-control ${this.state.roomIdError ? 'is-invalid' : ''}`} onChange={this.handleRoomIdChange} onBlur={this.validateRoomId}>
                             <option value="">Select an option</option>
                             {
                                 this.props.loadedRooms.map(loadedRoom => {
@@ -138,12 +138,12 @@ export default class ConferenceForm extends React.Component {
                     <div className="form-group row">
                         <label htmlFor="example-datetime-local-input" className="col-2 col-form-label">Date and time</label>
                         <div className="col-10">
-                            <input className={`form-control ${this.state.dateTimeError ? 'is-invalid' : ''}`} type="datetime-local" name="dateTime" placeholder="2011-08-19T13:45:00" id="example-datetime-local-input" value={this.state.dateTime} onChange={this.handleDateTimeChange} onBlur={this.validateDateTime}/>
+                            <input className={`form-control ${this.state.dateTimeError ? 'is-invalid' : ''}`} type="datetime-local" name="dateTime" min="2019-09-31T00:00" max="2999-12-31T00:00" id="example-datetime-local-input" value={this.state.dateTime} onChange={this.handleDateTimeChange} onBlur={this.validateDateTime}/>
                             <div className='invalid-feedback'>{this.state.dateTimeError}</div>
                         </div>
                     </div>
                     <div className="form-group">
-                        <button disabled={!isEnabled} className="btn btn-success" onClick={this.handleSubmit}>Create conference</button>
+                        <button type="submit" disabled={!isEnabled} className="btn btn-success" onClick={this.handleSubmit}>Create conference</button>
                     </div>        
                 </form>
             </div>
