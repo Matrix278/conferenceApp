@@ -45,7 +45,7 @@ export default class ConferenceForm extends React.Component {
     validateName() {
         const { name } = this.state;
         this.setState({
-            nameError: name.length > 3 ? "" : 'Conference name must be longer than 3 characters'
+            nameError: name.trim().length > 3 ? "" : 'Conference name must be longer than 3 characters'
         });
     }
 
@@ -58,7 +58,7 @@ export default class ConferenceForm extends React.Component {
     validateDateTime() {
         const { dateTime } = this.state;
         this.setState({
-            dateTimeError: dateTime.length !== "" ? "" : 'Date and time must be entered'
+            dateTimeError: dateTime !== "" ? "" : 'Date and time must be entered'
         });
     }
     
@@ -125,21 +125,21 @@ export default class ConferenceForm extends React.Component {
                                 )
                             }
                             </select>
-                            <div className='invalid-feedback'>{this.state.roomIdError}</div>
+                            <div id="invalid-roomId" className='invalid-feedback'>{this.state.roomIdError}</div>
                         </div>
                     </div>
                     <div className="form-group row">
                         <label htmlFor="example-text-input" className="col-2 col-form-label">Conference name</label>
                         <div className="col-10">
                             <input className={`form-control ${this.state.nameError ? 'is-invalid' : ''}`} type="text" name="name" placeholder="Baltic" maxLength="150" id="example-text-input" value={this.state.name} onChange={this.handleNameChange} onBlur={this.validateName}/>
-                            <div className='invalid-feedback'>{this.state.nameError}</div>
+                            <div id="invalid-name" className='invalid-feedback'>{this.state.nameError}</div>
                         </div>
                     </div>
                     <div className="form-group row">
                         <label htmlFor="example-datetime-local-input" className="col-2 col-form-label">Date and time</label>
                         <div className="col-10">
                             <input className={`form-control ${this.state.dateTimeError ? 'is-invalid' : ''}`} type="datetime-local" name="dateTime" min="2019-09-31T00:00" max="2999-12-31T00:00" id="example-datetime-local-input" value={this.state.dateTime} onChange={this.handleDateTimeChange} onBlur={this.validateDateTime}/>
-                            <div className='invalid-feedback'>{this.state.dateTimeError}</div>
+                            <div id="invalid-dateTime" className='invalid-feedback'>{this.state.dateTimeError}</div>
                         </div>
                     </div>
                     <div className="form-group">

@@ -31,7 +31,7 @@ export default class ConferenceRoomForm extends React.Component{
     validateName() {
         const { name } = this.state;
         this.setState({
-            nameError: name.length > 3 ? "" : 'Room name must be longer than 3 characters'
+            nameError: name.trim().length > 3 ? "" : 'Room name must be longer than 3 characters'
         });
     }
 
@@ -44,7 +44,7 @@ export default class ConferenceRoomForm extends React.Component{
     validateLocation() {
         const { location } = this.state;
         this.setState({
-            locationError: location.length > 3 ? "" : 'Location must be longer than 3 characters'
+            locationError: location.trim().length > 3 ? "" : 'Location must be longer than 3 characters'
         });
     }
 
@@ -95,21 +95,21 @@ export default class ConferenceRoomForm extends React.Component{
                         <label htmlFor="example-text-input2" className="col-2 col-form-label">Room name</label>
                         <div className="col-10">
                             <input className={`form-control ${this.state.nameError ? 'is-invalid' : ''}`} type="text" name="name" placeholder="M/S Baltic Queen conference" id="example-text-input2" value={this.state.name} onChange={this.handleNameChange} onBlur={this.validateName}/>
-                            <div className='invalid-feedback'>{this.state.nameError}</div>
+                            <div id="invalid-name" className='invalid-feedback'>{this.state.nameError}</div>
                         </div>
                     </div>
                     <div className="form-group row">
                         <label htmlFor="example-text-input3" className="col-2 col-form-label">Location</label>
                         <div className="col-10">
                             <input className={`form-control ${this.state.locationError ? 'is-invalid' : ''}`} type="text" name="location" placeholder="M/S Baltic Queen" id="example-text-input3" value={this.state.location} onChange={this.handleLocationChange} onBlur={this.validateLocation}/>
-                            <div className='invalid-feedback'>{this.state.locationError}</div>
+                            <div id="invalid-location" className='invalid-feedback'>{this.state.locationError}</div>
                         </div>
                     </div>
                     <div className="form-group row">
                         <label htmlFor="example-text-input4" className="col-2 col-form-label">Maximum seats</label>
                         <div className="col-10">
                             <input className={`form-control ${this.state.maxSeatsError ? 'is-invalid' : ''}`} type="number" name="maxSeats" placeholder="100" min="1" max="124" id="example-text-input4" value={this.state.maxSeats} onChange={this.handleMaxSeatsChange} onBlur={this.validateMaxSeats}/>
-                            <div className='invalid-feedback'>{this.state.maxSeatsError}</div>
+                            <div id="invalid-maxSeats" className='invalid-feedback'>{this.state.maxSeatsError}</div>
                         </div>
                     </div>
                     <div className="form-group">

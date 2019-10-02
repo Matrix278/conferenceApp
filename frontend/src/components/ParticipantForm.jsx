@@ -44,7 +44,7 @@ export default class ParticipantForm extends React.Component{
     validateFullName() {
         const { fullName } = this.state;
         this.setState({
-            fullNameError: fullName.length > 3 ? "" : 'Full name must be longer than 3 characters'
+            fullNameError: fullName.trim().length > 3 ? "" : 'Full name must be longer than 3 characters'
         });
     }
 
@@ -101,21 +101,21 @@ export default class ParticipantForm extends React.Component{
                                     )
                                 }
                             </select>
-                            <div className='invalid-feedback'>{this.state.conferenceIdError}</div>
+                            <div id="invalid-conferenceId" className='invalid-feedback'>{this.state.conferenceIdError}</div>
                         </div>
                     </div>
                     <div className="form-group row">
                         <label htmlFor="example-text-input2" className="col-2 col-form-label">Person full name</label>
                         <div className="col-10">
                             <input className={`form-control ${this.state.fullNameError ? 'is-invalid' : ''}`} type="text" name="fullName" placeholder="Aleksandr Reit" id="example-text-input2" value={this.state.fullName} onChange={this.handleFullNameChange} onBlur={this.validateFullName}/>
-                            <div className='invalid-feedback'>{this.state.fullNameError}</div>
+                            <div id="invalid-fullName" className='invalid-feedback'>{this.state.fullNameError}</div>
                         </div>
                     </div>
 					<div className="form-group row">
 						<label htmlFor="example-date-input" className="col-2 col-form-label">Date of birth</label>
 						<div className="col-10">
 							<input className={`form-control ${this.state.birthDateError ? 'is-invalid' : ''}`} type="date" name="birthDate" id="example-date-input" value={this.state.birthDate} onChange={this.handleBirthDateChange} onBlur={this.validateBirthDate}/>
-                            <div className='invalid-feedback'>{this.state.birthDateError}</div>
+                            <div id="invalid-birthDate" className='invalid-feedback'>{this.state.birthDateError}</div>
 						</div>
 					</div>
                     <div className="form-group">
