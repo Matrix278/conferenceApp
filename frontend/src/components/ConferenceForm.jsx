@@ -10,7 +10,7 @@ export default class ConferenceForm extends React.Component {
             roomIdError: '',
             nameError: '',
             dateTimeError: '',
-            countedParticipants: 0
+            countedParticipants: []
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleRoomIdChange = this.handleRoomIdChange.bind(this);
@@ -93,35 +93,40 @@ export default class ConferenceForm extends React.Component {
                             <option value="">Select an option</option>
                             {
                                 this.props.loadedRooms.map(loadedRoom => {
-                                    for(let i = 0; i <= this.props.loadedParticipants.length-1; i++) {
-                                        let confFilter = this.props.conferences.filter(conference => conference.id === this.props.loadedParticipants[i].conferenceId);
-                                        if (confFilter[i] !== undefined) {
-                                            console.log("Participant_conferenceID: " + this.props.loadedParticipants[i].conferenceId);
-                                            console.log(confFilter[i].id);
-                                            if (this.props.loadedParticipants[i].conferenceId === confFilter[i].id) {
-                                                let resultParticipants = this.props.loadedParticipants.filter(participant => participant.id = this.props.conferences.map(conference => conference.id));
-                                                this.state.countedParticipants = resultParticipants.length;
-                                                console.log("Filter Result length: " + resultParticipants.length);
-                                                //let confRoomID = this.props.conferences.filter(oneConference => oneConference.roomId);
+                                        let confRoomID = this.props.conferences.filter(oneConference => oneConference.roomId);
+                                        for(let j = 0; j <= confRoomID.length-1; j++) {
+                                            // console.log("ROOM_ID_IN_CONFERENCE: " + confRoomID[j].roomId);
+                                            // console.log("ROOM_ID: " + loadedRoom.id);
+                                            // console.log(" ");
+                                            if (confRoomID[j] !== undefined) {
+                                                if (confRoomID[j].roomId === loadedRoom.id) {
+                                                        for(let i = 0; i < this.props.conferences.length; i++) {
+                                                            for(let k = 0; k < this.props.loadedParticipants.length; k++) {
+                                                                // console.log(this.props.loadedParticipants.length);
+                                                                let confFilter = this.props.conferences.filter(conference => conference.id === this.props.loadedParticipants[k].conferenceId);
+                                                                // console.log("LoadedParticipants_CONF_ID: " + this.props.loadedParticipants[k].conferenceId);
+                                                                // console.log(this.props.conferences.filter(conference => conference.id)[i].id);
+                                                                if (confFilter[i] !== undefined) {
+                                                                    // console.log("Participant_conferenceID: " + this.props.loadedParticipants[i].conferenceId);
+                                                                    // console.log("CONFFILTER: " + this.props.conferences.filter(conference => conference.id)[i].id);
+                                                                    if (this.props.loadedParticipants[k].conferenceId === confFilter[i].id) {
+                                                                        let resultParticipants = this.props.loadedParticipants.filter(participant => participant.conferenceId === this.props.conferences.map(conference => conference.id)[k]);//[i]
+                                                                        console.log("Participant: " + this.props.loadedParticipants.filter(participant => participant.conferenceId)[k].conferenceId);
+                                                                        console.log("Conference: " + this.props.conferences.map(conference => conference.id)[k]);
+                                                                        this.state.countedParticipants = resultParticipants.length;
+                                                                        // console.log("Filter Result length: " + resultParticipants.length);
+                                                                        console.log("STATE COUNTED_PARTICIPANTS: " + this.state.countedParticipants);
+                                                                    }
+                                                                }
+                                                            }
+                                                    }//FOR END
+                                                }
                                             }
-                                        }
-                                        // for(let j = 0; j <= confRoomID.length-1; j++) {
-                                        //     console.log("ROOM_ID_IN_CONFERENCE: " + confRoomID[j].roomId);
-                                        //     console.log("ROOM_ID: " + loadedRoom.id);
-                                        //     console.log(" ");
-                                        //     if (confRoomID[j] !== undefined) {
-                                        //         if (confRoomID[j].roomId === loadedRoom.id) {
-                                        //             var availableSeats = loadedRoom.maxSeats - this.state.countedParticipants;
-                                        //         }
-                                        //         return <option value={loadedRoom.id}>{loadedRoom.id} - {loadedRoom.name}, Location: {loadedRoom.location} (Max seats: {loadedRoom.maxSeats}, Available seats: {availableSeats})</option>;
-                                        //     }
-                                        //     console.log("Counted_Participants: " + this.state.countedParticipants);
-                                        //     console.log("Available seats: " + availableSeats);
-                                        // }//FOR END
-                                    }
-                                    var availableSeats = loadedRoom.maxSeats - this.state.countedParticipants;
+                                        }//FOR END
+                                    console.log("Counted Participants in one conference: " + this.state.countedParticipants);
+                                    let availableSeats = loadedRoom.maxSeats - this.state.countedParticipants;
                                     return <option key={loadedRoom.id} value={loadedRoom.id}>{loadedRoom.id} - {loadedRoom.name}, Location: {loadedRoom.location} (Max seats: {loadedRoom.maxSeats}, Available seats: {availableSeats})</option>;
-                                }
+                                }//loadedRoom MAP END
                                 )
                             }
                             </select>
