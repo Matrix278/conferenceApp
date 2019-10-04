@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const CONFERENCE_API_URL = 'http://localhost:8080'
-const ALL_API_URL = `${CONFERENCE_API_URL}/api`
+const CONFERENCE_API_URL = 'http://localhost:8080';
+const ALL_API_URL = `${CONFERENCE_API_URL}/api`;
 
 class ConferenceDataService {
 

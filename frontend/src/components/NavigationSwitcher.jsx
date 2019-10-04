@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Conference from './Conference';
-import ConferenceRoom from './ConferenceRoom';
-import Participant from './Participant';
+import Conference from './conference/Conference';
+import ConferenceRoom from './room/ConferenceRoom';
+import Participant from './participant/Participant';
 
 export default class NavigationSwitcher extends React.Component {
       render() {
