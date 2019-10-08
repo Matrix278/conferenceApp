@@ -67,7 +67,8 @@ export default class ParticipantForm extends React.Component{
     handleSubmit(event) {
         event.preventDefault();
         // console.log("Name: " + this.state.name);
-        // console.log(this.state.conferenceIdError);
+        console.log(this.state.conferenceId);
+        console.log(this.state.conferenceIdError);
         // console.log(this.state.fullNameError);
         // console.log(this.state.birthDateError);
         if(this.state.conferenceId !== "" && this.state.fullName !== "" && this.state.birthDate !== ""){
@@ -99,9 +100,12 @@ export default class ParticipantForm extends React.Component{
                                         loadedConference => {
                                             let dateOfStart = loadedConference.dateTime.substring(0, 10); //DATE
                                             let timeOfStart = loadedConference.dateTime.substring(11, 16); //TIME
-                                            return <option key={loadedConference.id}
-                                                    value={loadedConference.id}>{loadedConference.id} - {loadedConference.name} (Start in: {dateOfStart} {timeOfStart},
-                                                Available seats: {loadedConference.availableSeats})</option>;
+                                            if(loadedConference.availableSeats !== 0) {
+                                                return <option key={loadedConference.id}
+                                                               value={loadedConference.id}>{loadedConference.id} - {loadedConference.name} (Start
+                                                    in: {dateOfStart} {timeOfStart},
+                                                    Available seats: {loadedConference.availableSeats})</option>;
+                                            }
                                         }
                                     )
                                 }
