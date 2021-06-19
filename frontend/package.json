@@ -22,7 +22,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy": "http://localhost:8080",
+  "proxy": "${CONFERENCE_API_URL}",
   "browserslist": {
     "production": [
       ">0.2%",
