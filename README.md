@@ -1,4 +1,7 @@
 # Conference web application
+
+Deployed on: https://tallink-test-conference-app.herokuapp.com/
+
 Spring Boot, H2 and React.js Web Application
 - Clone this repository
 - From frontend directory, run ```npm install``` and ```npm run build```
