@@ -1,7 +1,8 @@
 import axios from "axios";
+import * as env from "../env-variables";
 
 // eslint-disable-next-line no-undef
-const ALL_API_URL = `${CONFERENCE_API_URL}/api`;
+const ALL_API_URL = `${env.CONFERENCE_API_URL}/api`;
 
 class RoomDataService {
   retrieveAllRooms() {
