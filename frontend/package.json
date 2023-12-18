@@ -36,7 +36,7 @@
     ]
   },
   "devDependencies": {
-    "chromedriver": "^77.0.0",
+    "chromedriver": "^119.0.1",
     "geckodriver": "^1.18.0",
     "nightwatch": "^1.7.5",
     "selenium-server": "^3.141.59",
