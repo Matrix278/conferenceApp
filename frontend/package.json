@@ -38,7 +38,7 @@
   "devDependencies": {
     "chromedriver": "^119.0.1",
     "geckodriver": "^1.18.0",
-    "nightwatch": "^1.7.5",
+    "nightwatch": "^1.7.13",
     "selenium-server": "^3.141.59",
     "selenium-standalone": "^6.16.0"
   }
