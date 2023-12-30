@@ -1,0 +1,20 @@
+Conference
+
+long id
+long roomId
+string name
+localDateTime dateTime
+
+Conference room
+
+long id
+string name
+string location
+byte maxSeats
+
+Participant
+
+long id
+long conferenceId
+string fullName
+localDate birthDate
